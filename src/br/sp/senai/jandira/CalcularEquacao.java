@@ -9,6 +9,9 @@
  */
 
 package br.sp.senai.jandira;
+
+import javax.swing.JOptionPane;
+
 public class CalcularEquacao {
 	
 	private double a, b, c;
@@ -37,19 +40,45 @@ public class CalcularEquacao {
 //	}
 	
 	public double calcularDelta() {
+		if(a==0) {
+			a =1;
+		}
 		double delta = Math.pow(b, 2) - (4*a*c);
 		if(delta < 0) {
-			System.out.println("Não existe raiz no conjunto dos números reais");
+			JOptionPane.showMessageDialog(null, "A equação não possui raizes reais");
+			System.out.println("A equação não possui raizes reais");
 			System.exit(0);
 		}
 		return delta;
 	}
 	
+
 	public double x1() {
+		if(a==0) {
+			a =1;
+		}
 		return (-b + Math.sqrt(calcularDelta()))/(2*a);
 	}
 	public double x2() {
+		if(a==0) {
+			a =1;
+		}
 		return (-b - Math.sqrt(calcularDelta()))/(2*a);
 	}
+	
+	
+	public double [] calcularRaizes() {
+		if(a==0) {
+			a =1;
+		}
+		double x1 = (-b + Math.sqrt(calcularDelta()))/(2*a);
+		double x2 = (-b - Math.sqrt(calcularDelta()))/(2*a);
+		
+		//cria um vetor e atribui os 2 valores à ele
+		double raizes[] = {x1, x2};
+		
+		return raizes;
+	}
+	
 	
 }
